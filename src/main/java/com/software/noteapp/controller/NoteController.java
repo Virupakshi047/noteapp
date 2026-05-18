@@ -2,6 +2,8 @@ package com.software.noteapp.controller;
 
 import com.software.noteapp.dto.notesDTO.*;
 import com.software.noteapp.service.NoteService;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Email;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -31,11 +33,11 @@ public class NoteController {
     }
 
     @PostMapping
-    public CreateNoteResponseDTO createNote(@RequestBody CreateNoteRequestDTO createNoteRequestDTO, @AuthenticationPrincipal String email){
+    public CreateNoteResponseDTO createNote(@Valid @RequestBody CreateNoteRequestDTO createNoteRequestDTO,@AuthenticationPrincipal String email){
         return noteService.addNote(createNoteRequestDTO,email);
     }
     @PutMapping("/{noteId}")
-    public UpdateNoteResponseDTO updateNote(@AuthenticationPrincipal String email,@PathVariable Long noteId, @RequestBody UpdateNoteRequestDTO updateNoteRequestDTO){
+    public UpdateNoteResponseDTO updateNote(@AuthenticationPrincipal String email,@PathVariable Long noteId,@Valid @RequestBody UpdateNoteRequestDTO updateNoteRequestDTO){
         return noteService.updateNote(email, noteId, updateNoteRequestDTO);
     }
 

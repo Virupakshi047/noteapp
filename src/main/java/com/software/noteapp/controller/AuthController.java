@@ -5,6 +5,7 @@ import com.software.noteapp.dto.AuthLoginResponseDTO;
 import com.software.noteapp.dto.AuthRequestDTO;
 import com.software.noteapp.dto.AuthResponseDTO;
 import com.software.noteapp.service.AuthService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
